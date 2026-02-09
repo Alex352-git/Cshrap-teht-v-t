@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36811.4 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ovi auki", "Ovi auki.csproj", "{0CC958E4-38AF-4910-B496-252575F2D421}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0CC958E4-38AF-4910-B496-252575F2D421}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CC958E4-38AF-4910-B496-252575F2D421}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CC958E4-38AF-4910-B496-252575F2D421}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CC958E4-38AF-4910-B496-252575F2D421}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1EB939E4-8D09-4BD4-AABF-96D0C1AE8105}
+	EndGlobalSection
+EndGlobal
