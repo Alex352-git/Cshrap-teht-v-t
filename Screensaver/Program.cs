@@ -19,13 +19,13 @@ namespace Screensaver
         }
         public static void Main()
         {
-            int screen_width =800;
-            int screen_height =600;
-            Vector2 A= new Vector2(100,20);
+            int screen_width = 800;
+            int screen_height = 600;
+            Vector2 A = new Vector2(100, 20);
             Vector2 B = new Vector2(60, 40);
             Vector2 C = new Vector2(300, 60);
             Vector2 Amove = new Vector2(1, 1);
-            Vector2 Bmove = new Vector2(1,-1);
+            Vector2 Bmove = new Vector2(1, -1);
             Vector2 Cmove = new Vector2(-1, 1);
             float speed = 500;
             var R = new Random();
@@ -34,32 +34,83 @@ namespace Screensaver
 
             while (Raylib.WindowShouldClose() == false)
             {
-                
+
                 float dt = Raylib.GetFrameTime();
                 Raylib.BeginDrawing();
                 Raylib.ClearBackground(Color.Black);
                 Raylib.DrawLineV(A, B, Color.DarkBlue);
                 Raylib.DrawLineV(B, C, Color.Magenta);
-                Raylib.DrawLineV(C,A, Color.Lime);
+                Raylib.DrawLineV(C, A, Color.Lime);
                 A.X = Amove.X * speed * dt + A.X;
-                A.Y = Amove.Y* speed* dt + A.Y;
-                B.X = Bmove.X* speed* dt + B.X;
-                B.Y = Bmove.Y* speed* dt + B.Y;
-                C.X = Cmove.X* speed* dt + C.X;
-                C.Y = Cmove.Y* speed* dt + C.Y;
-                Amove=Törmäystarkistus(A,Amove, screen_width,screen_height);
+                A.Y = Amove.Y * speed * dt + A.Y;
+                B.X = Bmove.X * speed * dt + B.X;
+                B.Y = Bmove.Y * speed * dt + B.Y;
+                C.X = Cmove.X * speed * dt + C.X;
+                C.Y = Cmove.Y * speed * dt + C.Y;
+                Amove = Törmäystarkistus(A, Amove, screen_width, screen_height);
                 Bmove = Törmäystarkistus(B, Bmove, screen_width, screen_height);
                 Cmove = Törmäystarkistus(C, Cmove, screen_width, screen_height);
+                if (A.X < 0)
+                {
+                    A.X = 0;
+                }
+                if (A.Y < 0)
+                {
+                    A.Y = 0;
+                }
+                if (A.X > 800)
+                {
+                    A.X = 800;
+                }
+                if (A.Y >600)
+                {
+                    A.Y = 600;
+
+                }
+                if (B.X < 0)
+                {   
+                    B.X = 0;
+                }   
+                if (B.Y < 0)
+                {   
+                    B.Y = 0;
+                }   
+                if (B.X > 800)
+                {   
+                    B.X = 800;
+                }   
+                if (B.Y > 600)
+                {   
+                    B.Y = 600;
+                }
 
 
 
-                System.Threading.Thread.Sleep(1);
+
+
+                if (C.X < 0)
+                {   
+                    C.X = 0;
+                }   
+                if (C.Y < 0)
+                {   
+                    C.Y = 0;
+                }   
+                if (C.X > 800)
+                {   
+                    C.X = 800;
+                }   
+                if (C.Y > 600)
+                {   
+                    C.Y = 600;
+                }
 
 
                 Raylib.EndDrawing();
             }
 
-            Raylib.CloseWindow();
+                Raylib.CloseWindow();
+            
         }
     }
 }
