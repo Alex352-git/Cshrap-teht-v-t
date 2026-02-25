@@ -2,7 +2,7 @@
 
 namespace Nuoli_generaattori
 {
-    // Enumeraattorit
+    
     enum Karki
     {
         puu,
@@ -21,9 +21,9 @@ namespace Nuoli_generaattori
     {
         public Karki NuolenKarki { get; set; }
         public Pera NuolenPera { get; set; }
-        public int VarrenPituus { get; set; } // sentteinä
+        public int VarrenPituus { get; set; } 
 
-        // Metodi nuolen hinnan laskemiseen
+        
         public double PalautaHinta()
         {
             double hinta = 0;
