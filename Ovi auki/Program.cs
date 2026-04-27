@@ -1,17 +1,81 @@
-﻿namespace Ovi_auki
+﻿using System;
+
+namespace Ovi_auki
 {
-    internal class Program
+    enum OvenTila
     {
-        enum OvenTila
+        Auki,
+        Kiinni,
+        Lukossa
+    }
+
+    class Ovi
+    {
+        public OvenTila Tila { get; set; }
+
+        public Ovi()
         {
-            Auki,
-            Kiinni,
-            Lukossa
+            Tila = OvenTila.Lukossa;
         }
 
+        public void Avaa()
+        {
+            if (Tila == OvenTila.Kiinni)
+            {
+                Tila = OvenTila.Auki;
+                Console.WriteLine($"Ovi on nyt {Tila}");
+            }
+            else
+            {
+                Console.WriteLine("Et voi avata ovea nyt.");
+            }
+        }
+
+        public void Sulje()
+        {
+            if (Tila == OvenTila.Auki)
+            {
+                Tila = OvenTila.Kiinni;
+                Console.WriteLine($"Ovi on nyt {Tila}");
+            }
+            else
+            {
+                Console.WriteLine("Et voi sulkea ovea nyt.");
+            }
+        }
+
+        public void Lukitse()
+        {
+            if (Tila == OvenTila.Kiinni || Tila == OvenTila.Auki)
+            {
+                Tila = OvenTila.Lukossa;
+                Console.WriteLine($"Ovi on nyt {Tila}");
+            }
+            else
+            {
+                Console.WriteLine("Et voi lukita ovea nyt.");
+            }
+        }
+
+        public void PoistaLukitus()
+        {
+            if (Tila == OvenTila.Lukossa)
+            {
+                Tila = OvenTila.Kiinni;
+                Console.WriteLine($"Ovi on nyt {Tila}");
+            }
+            else
+            {
+                Console.WriteLine("Ovi ei ole lukossa.");
+            }
+        }
+    }
+
+    internal class Program
+    {
         static void Main(string[] args)
         {
-            OvenTila ovi = OvenTila.Lukossa;
+            Ovi oviOlio = new Ovi();
 
             Console.WriteLine("Moi tässä on ovi ja se on lukossa sinulla on viisi komentoo");
             Console.WriteLine("avaa");
@@ -22,58 +86,31 @@
 
             while (true)
             {
-                Console.WriteLine($"Ovi on {ovi}. Mitä haluat tehdä?");
+                Console.WriteLine($"\nOvi on {oviOlio.Tila}. Mitä haluat tehdä?");
                 string komento = Console.ReadLine().ToLower();
 
                 if (komento == "avaa")
                 {
-                    if (ovi == OvenTila.Kiinni)
-                    {
-                        ovi = OvenTila.Auki;
-                        Console.WriteLine($"Ovi on nyt {ovi}");
-                    }
-                    else
-                        Console.WriteLine("Et voi avata ovea nyt.");
+                    oviOlio.Avaa();
                 }
                 else if (komento == "sulje")
                 {
-                    if (ovi == OvenTila.Auki)
-                    {
-                        ovi = OvenTila.Kiinni;
-                        Console.WriteLine($"Ovi on nyt {ovi}");
-
-                    }
-
-
-
-
-                    else
-                        Console.WriteLine("Et voi sulkea ovea nyt.");
+                    oviOlio.Sulje();
                 }
                 else if (komento == "lukitse")
                 {
-                    if (ovi == OvenTila.Kiinni || ovi == OvenTila.Auki) 
-                    {
-                        ovi = OvenTila.Lukossa;
-                        Console.WriteLine($"Ovi on nyt {ovi}");
-                    }
-                        
-                    else
-                        Console.WriteLine("Et voi lukita ovea nyt.");
+                    oviOlio.Lukitse();
+                    Console.WriteLine("Lukko on asetettu.");
                 }
                 else if (komento == "avaa lukko" || komento == "poista lukitus")
                 {
-                    if (ovi == OvenTila.Lukossa)
-
-                    {
-                        ovi = OvenTila.Kiinni;
-                        Console.WriteLine($"Ovi on nyt {ovi}");
-                    }
-                    else
-                        Console.WriteLine("Ovi ei ole lukossa.");
+                    oviOlio.PoistaLukitus();
+                    Console.WriteLine("Lukko on avattu.");
                 }
                 else if (komento == "lopeta")
+                {
                     break;
+                }
                 else
                 {
                     Console.WriteLine("Tuntematon komento.");
